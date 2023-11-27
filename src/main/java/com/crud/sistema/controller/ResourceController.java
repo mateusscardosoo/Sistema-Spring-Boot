@@ -1,6 +1,7 @@
 package com.crud.sistema.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,36 +14,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crud.sistema.dto.UserDTO;
-import com.crud.sistema.service.UserService;
+import com.crud.sistema.dto.ResourceDTO;
+import com.crud.sistema.service.ResourceService;
+
+
 
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/resource")
 @CrossOrigin
-public class UserController {
+public class ResourceController {
+
     @Autowired
-    private UserService userService;
+    private ResourceService resourceService;
+
 
     @GetMapping
-    public List<UserDTO> listAll(){
-        return userService.listAll();
+    public List<ResourceDTO> listAll(){
+        return resourceService.listAll();
     }
 
+ 
     @PostMapping
-    public void insert(@RequestBody UserDTO user){
-        userService.insert(user);
+    public void insert(@RequestBody ResourceDTO resouce){
+        resourceService.insert(resouce);
     }
 
     @PutMapping("/{id}")
-    public UserDTO alterate(@RequestBody UserDTO user, @PathVariable("id") Long id){
-        return userService.alterate(id, user);
+    public ResourceDTO alterate(@RequestBody ResourceDTO resource, @PathVariable("id") Long id){
+        return resourceService.alterate(id, resource);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> exclude(@PathVariable("id") Long id){
-        userService.exclude(id);
-        return ResponseEntity.ok().build();
+    resourceService.exclude(id);
+    return ResponseEntity.ok().build();
+   
     }
+
+
     
+
     
 }

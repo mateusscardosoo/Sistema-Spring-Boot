@@ -24,6 +24,7 @@ public class UserDTO {
     }
 
 
+
     //Getters and Setters
     public long getId() {
         return id;

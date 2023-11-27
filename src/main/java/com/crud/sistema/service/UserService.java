@@ -25,9 +25,23 @@ public class UserService {
         userRepository.save(userEntity);
     }
 
-    public UserDTO alterate(UserDTO user){
-        UserEntity userEntity = new UserEntity(user);
-        return new UserDTO(userRepository.save(userEntity));
+    public UserDTO alterate(Long id, UserDTO user){
+
+        UserEntity oldUser = userRepository.findById(id).get(); 
+        UserEntity newUser = new UserEntity(user);
+        updateData(newUser, oldUser);
+        userRepository.save(oldUser);
+        return new UserDTO(oldUser);
+
+
+    }
+
+    public void updateData(UserEntity newUser, UserEntity oldUser){
+        oldUser.setName(newUser.getName());
+        oldUser.setEmail(newUser.getEmail());
+        oldUser.setPassword(newUser.getPassword()); 
+        oldUser.setUsername(newUser.getUsername());
+        
     }
 
     public void exclude (Long id){
