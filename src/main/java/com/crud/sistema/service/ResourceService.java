@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.crud.sistema.dto.ResourceDTO;
-import com.crud.sistema.dto.UserDTO;
 import com.crud.sistema.entity.ResourceEntity;
-import com.crud.sistema.entity.UserEntity;
 import com.crud.sistema.repository.ResourceRepository;
 
 @Service
@@ -43,8 +41,6 @@ public class ResourceService {
      public void updateData(ResourceEntity newResource, ResourceEntity oldResource){
         oldResource.setName(newResource.getName());
         oldResource.setKey(newResource.getKey());
-
-        
     }
 
 
